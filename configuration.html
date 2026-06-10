@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Configuration Profiles</title>
+
+<link rel="stylesheet" href="CSS/app.css">
+<link rel="stylesheet" href="CSS/layout.css">
+<link rel="stylesheet" href="CSS/components.css">
+<link rel="stylesheet" href="CSS/configuration.css">
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <nav class="sidebar-nav">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="request-serials.html">
+                        Request Serials
+                    </a>
+                </li>
+
+                <li>
+                    <a href="epcis-upload.html">
+                        EPCIS Upload
+                    </a>
+                </li>
+
+                <li>
+                    <a href="configuration.html" class="active">
+                        Profiles
+                    </a>
+                </li>
+
+                <li>
+                    <a href="packaging-line-simulation.html">
+                        Packaging Simulator
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main -->
+
+    <div class="main-wrapper">
+
+        <header class="top-header">
+
+            <div class="header-title">
+                Serialization Gateway
+            </div>
+
+            <div class="header-right">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        placeholder="Search profiles...">
+
+                </div>
+
+                <button
+                    id="themeToggle"
+                    class="btn btn-outline">
+
+                    🌙 Dark Mode
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <main class="page-content">
+
+            <!-- Page Header -->
+
+            <div class="page-header">
+
+                <h1>
+                    Configuration Profiles
+                </h1>
+
+                <p class="text-secondary">
+
+                    Manage reusable HTTPS and SFTP connection profiles.
+
+                </p>
+
+            </div>
+
+            <!-- Statistics -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <h4>Total Profiles</h4>
+
+                    <h2 id="totalProfiles">
+                        0
+                    </h2>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h4>Active Profiles</h4>
+
+                    <h2 id="activeProfiles">
+                        0
+                    </h2>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h4>HTTPS Profiles</h4>
+
+                    <h2 id="httpsProfiles">
+                        0
+                    </h2>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h4>SFTP Profiles</h4>
+
+                    <h2 id="sftpProfiles">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <div class="container">
+
+                <!-- Left -->
+
+                <div class="panel">
+
+                    <h2>
+                        Connection Profile Configuration
+                    </h2>
+
+                    <label>
+                        Module
+                    </label>
+
+                    <div class="radio-group">
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="moduleType"
+                                value="REQUEST_SERIALS"
+                                checked>
+
+                            Request Serials
+
+                        </label>
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="moduleType"
+                                value="EPCIS_UPLOAD">
+
+                            EPCIS Upload
+
+                        </label>
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="moduleType"
+                                value="EPCIS_SAMPLE_SCHEMA">
+
+                            EPCIS Sample Schema
+
+                        </label>
+
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>Connection Type</label>
+
+                            <select id="connectionType">
+
+                                <option value="HTTPS">
+                                    HTTPS
+                                </option>
+
+                                <option value="SFTP">
+                                    SFTP
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Profile Name</label>
+
+                            <input
+                                type="text"
+                                id="profileName">
+
+                        </div>
+
+                        <div class="form-group full-width">
+
+                            <label>Environment</label>
+
+                            <select id="environment">
+
+                                <option>DEV</option>
+                                <option>QA</option>
+                                <option>UAT</option>
+                                <option>PROD</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <!-- HTTPS -->
+
+                    <div id="httpsSection">
+
+                        <div class="form-grid">
+
+                            <div class="form-group full-width">
+
+                                <label>
+                                    HTTPS URL
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="httpsUrl">
+
+                            </div>
+
+                            <div class="form-group full-width">
+
+                                <label>
+                                    API Token
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="apiToken">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- SFTP -->
+
+                    <div id="sftpSection">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>Hostname</label>
+                            <input id="host">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Port</label>
+                            <input
+                                type="number"
+                                id="port">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Username</label>
+                            <input id="username">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                id="password">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Remote Path</label>
+                            <input id="remotePath">
+
+                        </div>
+
+                        <div class="form-group full-width">
+
+                            <label>SSH Private Key</label>
+
+                            <input
+                                type="file"
+                                id="privateKey"
+                                accept=".pem">
+
+                            <div
+                                id="privateKeyName"
+                                class="text-secondary">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                    <div class="button-group">
+
+                        <button
+                            id="saveProfile"
+                            class="btn btn-primary">
+
+                            Save Profile
+
+                        </button>
+
+                        <button
+                            id="clearProfile"
+                            class="btn btn-danger">
+
+                            Clear
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Right -->
+
+                <div class="panel">
+
+                    <h2>
+                        Saved Profiles
+                    </h2>
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Name</th>
+                                <th>Module</th>
+                                <th>Type</th>
+                                <th>Environment</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="profileTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script src="Js/configuration.js"></script>
+<script src="Js/theme.js"></script>
+
+</body>
+
+</html>

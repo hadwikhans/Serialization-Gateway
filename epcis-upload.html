@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EPCIS Upload</title>
+
+<link rel="stylesheet" href="CSS/app.css">
+<link rel="stylesheet" href="CSS/layout.css">
+<link rel="stylesheet" href="CSS/components.css">
+<link rel="stylesheet" href="CSS/epcis-upload.css">
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <nav class="sidebar-nav">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="request-serials.html">
+                        Request Serials
+                    </a>
+                </li>
+
+                <li>
+                    <a href="epcis-upload.html" class="active">
+                        EPCIS Upload
+                    </a>
+                </li>
+
+                <li>
+                    <a href="configuration.html">
+                        Profiles
+                    </a>
+                </li>
+
+                <li>
+                    <a href="packaging-line-simulation.html">
+                        Packaging Simulator
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <div class="main-wrapper">
+
+        <header class="top-header">
+
+            <div class="header-title">
+                Serialization Gateway
+            </div>
+
+            <div class="header-right">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        placeholder="Search uploads...">
+
+                </div>
+
+                <button
+                    id="themeToggle"
+                    class="btn btn-outline">
+
+                    🌙 Dark Mode
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <main class="page-content">
+
+            <div class="page-header">
+
+                <h1>
+                    EPCIS Upload
+                </h1>
+
+                <p class="text-secondary">
+
+                    Upload EPCIS XML files using HTTPS or SFTP profiles.
+
+                </p>
+
+            </div>
+
+            <div class="stepper">
+
+                <div class="step active">
+                    <div class="step-circle">1</div>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="step active">
+                    <div class="step-circle">2</div>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="step">
+                    <div class="step-circle">3</div>
+                </div>
+
+            </div>
+
+            <div class="container">
+
+                <!-- LEFT -->
+
+                <div class="panel">
+
+                    <h2>
+                        Upload Configuration
+                    </h2>
+
+                    <label>
+                        Transfer Type
+                    </label>
+
+                    <select id="transferType">
+
+                        <option value="HTTPS">
+                            HTTPS
+                        </option>
+
+                        <option value="SFTP">
+                            SFTP
+                        </option>
+
+                    </select>
+
+                    <div id="httpsSection">
+
+                        <label>
+                            Profile *
+                        </label>
+
+                        <select id="profileSelect">
+
+                            <option value="">
+                                Select Profile
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div
+                        id="sftpSection"
+                        style="display:none;">
+
+                        <label>
+                            Profile *
+                        </label>
+
+                        <select id="sftpProfileSelect">
+
+                            <option value="">
+                                Select Profile
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <label>
+                        EPCIS XML File
+                    </label>
+
+                    <input
+                        type="file"
+                        id="xmlFile"
+                        accept=".xml">
+
+                    <div class="button-group">
+
+                        <button
+                            id="uploadButton"
+                            class="btn btn-primary">
+
+                            Upload EPCIS
+
+                        </button>
+
+                        <button
+                            id="clearButton"
+                            class="btn btn-danger">
+
+                            Clear
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT -->
+
+                <div class="panel">
+
+                    <h2>
+                        File Summary
+                    </h2>
+
+                    <div class="summary">
+
+                        <p>
+                            File Name :
+                            <span id="fileName">-</span>
+                        </p>
+
+                        <p>
+                            File Size :
+                            <span id="fileSize">-</span>
+                        </p>
+
+                        <p>
+                            File Type :
+                            <span id="fileType">-</span>
+                        </p>
+
+                    </div>
+
+                    <h2>
+                        Event Summary
+                    </h2>
+
+                    <div class="summary">
+
+                        <p>
+                            Commission Events :
+                            <span id="commissionCount">-</span>
+                        </p>
+
+                        <p>
+                            Aggregation Events :
+                            <span id="aggregationCount">-</span>
+                        </p>
+
+                        <p>
+                            Destroy Events :
+                            <span id="destroyCount">-</span>
+                        </p>
+
+                        <p>
+                            Total Events :
+                            <span id="totalCount">-</span>
+                        </p>
+
+                    </div>
+
+                    <h2>
+                        Upload Response
+                    </h2>
+
+                    <div class="summary">
+
+                        <p>
+                            Status :
+                            <span id="status">
+                                Ready
+                            </span>
+                        </p>
+
+                        <p>
+                            Duration :
+                            <span id="duration">
+                                -
+                            </span>
+                        </p>
+
+                        <p>
+                            Response Code :
+                            <span id="responseCode">
+                                -
+                            </span>
+                        </p>
+
+                    </div>
+
+                    <div id="responseMessage">
+
+                        No response available.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script src="Js/epcis-upload.js"></script>
+<script src="Js/theme.js"></script>
+
+</body>
+
+</html>

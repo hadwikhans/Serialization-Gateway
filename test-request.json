@@ -1,0 +1,19 @@
+{
+"url": "https://internal-sales-3-api.altiushub.com/api/v1/serial_number_interchange/requisition/",
+"token": "29c27b44fb3cf4544bc165978c7dfe2e1bf792a9",
+"payload": {
+"id": "YOUR_TOKEN_HERE",
+"network_link": null,
+"plant_sgln": "0614141.00001.0",
+"po_number": null,
+"po_line_number": null,
+"work_order_number": null,
+"reference_identifier": null,
+"encoding_type": "AI(01)+AI(21)",
+"quantity": 1,
+"packaging_code": "08901234859582",
+"gs1_company_prefix": null,
+"extension_digit": null,
+"system_name": "DEFAULT"
+}
+}

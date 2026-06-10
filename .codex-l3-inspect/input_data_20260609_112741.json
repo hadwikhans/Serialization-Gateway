@@ -1,0 +1,58 @@
+{
+    "sender_sgln": "0614141.00002.1",
+    "receiver_sgln": "0614141.00001.0",
+    "expiration_date": "2026-06-30",
+    "manufacturing_date": "2026-06-09",
+    "gcp": "8901234",
+    "internal_material_code": "INT0001",
+    "lot_number": "LOTUS090626",
+    "extension_digit": 0,
+    "modules": {
+        "SNI": {
+            "enabled": false,
+            "commissioning": {
+                "each": {
+                    "name": "REQUISITION_2026-06-09T05-20-08-785Z.xlsx",
+                    "file_path": "data\\REQUISITION_2026-06-09T05-20-08-785Z.xlsx",
+                    "uploaded_at": "2026-06-09T11:27:40.964313",
+                    "file_type": "REAL_TIME"
+                },
+                "case": {
+                    "name": "REQUISITION_2026-06-09T05-19-37-394Z.xlsx",
+                    "file_path": "data\\REQUISITION_2026-06-09T05-19-37-394Z.xlsx",
+                    "uploaded_at": "2026-06-09T11:27:40.994506",
+                    "pack_size": 2,
+                    "file_type": "REAL_TIME"
+                },
+                "pallet": {
+                    "name": "REQUISITION_2026-06-09T05-19-21-758Z.xlsx",
+                    "file_path": "data\\REQUISITION_2026-06-09T05-19-21-758Z.xlsx",
+                    "uploaded_at": "2026-06-09T11:27:41.009713",
+                    "pack_size": 4,
+                    "file_type": "REAL_TIME"
+                }
+            },
+            "aggregation": [],
+            "disaggregation": [],
+            "update": {}
+        },
+        "SPO": {
+            "enabled": false,
+            "decommissioning": {},
+            "destruction": {},
+            "sampling": {},
+            "status_update": {}
+        },
+        "WHD": {
+            "enabled": false,
+            "inbound": {},
+            "outbound": {}
+        },
+        "BPM": {
+            "enabled": false,
+            "reopen_lot": {},
+            "end_of_lot": {}
+        }
+    },
+    "generated_at": "2026-06-09T11:27:41.024870"
+}

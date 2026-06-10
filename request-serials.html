@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Request Serials</title>
+
+<link rel="stylesheet" href="CSS/app.css">
+<link rel="stylesheet" href="CSS/layout.css">
+<link rel="stylesheet" href="CSS/components.css">
+<link rel="stylesheet" href="CSS/request-serials.css">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <nav class="sidebar-nav">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="request-serials.html" class="active">
+                        Request Serials
+                    </a>
+                </li>
+
+                <li>
+                    <a href="epcis-upload.html">
+                        EPCIS Upload
+                    </a>
+                </li>
+
+                <li>
+                    <a href="configuration.html">
+                        Profiles
+                    </a>
+                </li>
+
+                <li>
+                    <a href="packaging-line-simulation.html">
+                        Packaging Simulator
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Wrapper -->
+
+    <div class="main-wrapper">
+
+        <!-- Top Header -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <div class="header-title">
+                    Serialization Gateway
+                </div>
+
+            </div>
+
+            <div class="header-right">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        placeholder="Search modules...">
+
+                </div>
+
+                <button
+                    id="themeToggle"
+                    class="btn btn-outline">
+
+                    🌙 Dark Mode
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- Page Content -->
+
+        <main class="page-content">
+
+            <div class="page-header">
+
+                <h1>
+                    Request Serial Numbers
+                </h1>
+
+                <p class="text-secondary">
+                    Generate serial numbers using configured profiles and environments.
+                </p>
+
+            </div>
+
+            <div class="stepper">
+
+                <div class="step active">
+                    <div class="step-circle">1</div>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="step active">
+                    <div class="step-circle">2</div>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="step">
+                    <div class="step-circle">3</div>
+                </div>
+
+            </div>
+
+            <div class="container">
+
+                <!-- Configuration -->
+
+                <div class="panel">
+
+                    <h2>Configuration</h2>
+
+                    <label>Profile *</label>
+
+                    <select id="profileSelect">
+
+                        <option value="">
+                            Select Profile
+                        </option>
+
+                    </select>
+
+                    <div id="profileInfo" class="profile-info"></div>
+
+                    <label>Serialization Type</label>
+
+                    <select id="serializationType">
+
+                        <option value="GTIN">
+                            GTIN / NTIN
+                        </option>
+
+                        <option value="SSCC">
+                            SSCC
+                        </option>
+
+                    </select>
+
+                    <label>Plant SGLN</label>
+
+                    <input
+                        id="plantSgln"
+                        value="8909456.00002.0">
+
+                    <label>Quantity</label>
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        value="1">
+
+                    <div id="gtinSection">
+
+                        <label>Packaging Code</label>
+
+                        <input id="packagingCode">
+
+                    </div>
+
+                    <div
+                        id="ssccSection"
+                        style="display:none;">
+
+                        <label>GS1 Company Prefix</label>
+
+                        <input id="gcp">
+
+                        <label>Extension Digit</label>
+
+                        <input id="extensionDigit">
+
+                    </div>
+
+                    <label>System Name</label>
+
+                    <input
+                        id="systemName"
+                        value="DEFAULT">
+
+                    <div class="button-group">
+
+                        <button
+                            id="requestButton"
+                            class="btn btn-primary">
+
+                            Request Serials
+
+                        </button>
+
+                        <button
+                            id="clearButton"
+                            class="btn btn-danger">
+
+                            Clear
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Results -->
+
+                <div class="panel">
+
+                    <h2>Response Summary</h2>
+
+                    <div class="summary">
+
+                        <p>Status : <span id="status">Ready</span></p>
+
+                        <p>Requested : <span id="requestedQty">0</span></p>
+
+                        <p>Received : <span id="receivedQty">0</span></p>
+
+                        <p>Duration : <span id="duration">0 sec</span></p>
+
+                    </div>
+
+                    <div id="errorSection">
+
+                        <h3>Error Details</h3>
+
+                        <div id="errorMessage"></div>
+
+                    </div>
+
+                    <div class="summary">
+
+                        <p>First Serial : <span id="firstSerial">-</span></p>
+
+                        <p>Last Serial : <span id="lastSerial">-</span></p>
+
+                        <p>Total Generated : <span id="totalGenerated">0</span></p>
+
+                    </div>
+
+                    <a href="#" id="viewAllLink">
+                        🔍 View All Serials
+                    </a>
+
+                    <div class="actions">
+
+                        <button
+                            class="btn btn-outline"
+                            onclick="downloadCSV()">
+
+                            CSV
+
+                        </button>
+
+                        <button
+                            class="btn btn-outline"
+                            onclick="downloadXLSX()">
+
+                            Excel
+
+                        </button>
+
+                        <button
+                            class="btn btn-outline"
+                            onclick="downloadJSON()">
+
+                            JSON
+
+                        </button>
+
+                        <button
+                            class="btn btn-outline"
+                            onclick="copySerials()">
+
+                            Copy
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+
+<div id="serialModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>All Serial Numbers</h2>
+
+            <span id="closeModal">
+                &times;
+            </span>
+
+        </div>
+
+        <div id="modalSerialList"></div>
+
+    </div>
+
+</div>
+
+<script src="Js/request-serials.js"></script>
+<script src="Js/theme.js"></script>
+
+</body>
+
+</html>

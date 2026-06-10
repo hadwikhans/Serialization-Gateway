@@ -1,0 +1,256 @@
+/* ========================================
+   Request Serials Page
+======================================== */
+
+.container{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:24px;
+
+    align-items:start;
+}
+
+.panel{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:24px;
+
+    box-shadow:var(--shadow-sm);
+}
+
+.panel h2{
+
+    margin-bottom:20px;
+
+    color:var(--primary);
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    margin-top:16px;
+}
+
+input,
+select{
+
+    width:100%;
+
+    height:44px;
+
+    padding:0 12px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    background:var(--surface);
+
+    color:var(--text);
+}
+
+input:focus,
+select:focus{
+
+    outline:none;
+
+    border-color:var(--secondary);
+}
+
+.profile-info{
+
+    margin-top:12px;
+}
+
+.button-group{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:24px;
+}
+
+.button-group button{
+
+    flex:1;
+}
+
+.summary{
+
+    background:var(--surface-light);
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    padding:16px;
+
+    margin-bottom:16px;
+}
+
+.summary p{
+
+    margin-bottom:10px;
+}
+
+.summary span{
+
+    font-weight:600;
+}
+
+.actions{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.actions button{
+
+    width:100%;
+}
+
+#viewAllLink{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    margin-bottom:15px;
+
+    color:var(--secondary);
+
+    text-decoration:none;
+
+    font-weight:600;
+}
+
+#errorSection{
+
+    display:none;
+
+    padding:16px;
+
+    border-radius:10px;
+
+    margin-bottom:16px;
+
+    background:#FEF2F2;
+
+    border:1px solid #FECACA;
+}
+
+body.dark #errorSection{
+
+    background:#3F1D1D;
+
+    border-color:#7F1D1D;
+}
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.6);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+}
+
+.modal-content{
+
+    width:80%;
+
+    max-width:1000px;
+
+    max-height:80vh;
+
+    overflow:auto;
+
+    background:var(--surface);
+
+    border-radius:16px;
+
+    padding:24px;
+}
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+#closeModal{
+
+    font-size:28px;
+
+    cursor:pointer;
+}
+
+#modalSerialList{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+#modalSerialList div{
+
+    padding:8px;
+
+    border-bottom:1px solid var(--border);
+
+    font-family:monospace;
+}
+
+@media(max-width:1000px){
+
+    .container{
+
+        grid-template-columns:1fr;
+    }
+
+    .actions{
+
+        grid-template-columns:
+        1fr
+        1fr;
+    }
+}

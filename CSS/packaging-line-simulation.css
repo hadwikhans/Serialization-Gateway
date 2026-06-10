@@ -1,0 +1,386 @@
+/* ========================================
+   Packaging Line Simulation Wizard
+======================================== */
+
+.wizard-steps{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-bottom:24px;
+
+    flex-wrap:wrap;
+}
+
+.wizard-step{
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    background:var(--surface-light);
+
+    border:1px solid var(--border);
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:all 0.2s ease;
+}
+
+.wizard-step.active{
+
+    background:var(--secondary);
+
+    color:#ffffff;
+}
+
+.page-card{
+
+    max-width:1250px;
+
+    margin:0 auto;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:32px;
+}
+
+.page-card h2{
+
+    margin-bottom:28px;
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        550px 550px;
+
+    gap:28px 40px;
+
+    justify-content:center;
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.form-group label{
+
+    margin-bottom:8px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.5px;
+
+    color:var(--primary);
+}
+
+.form-group input,
+.form-group select{
+
+    width:550px;
+
+    max-width:550px;
+
+    padding:12px 14px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    background:var(--surface);
+
+    color:var(--text);
+}
+
+input[type="date"]{
+
+    width:350px;
+
+    max-width:350px;
+}
+
+.checkbox-group{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:24px;
+}
+
+.checkbox-group label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    font-weight:500;
+}
+
+.summary{
+
+    display:grid;
+
+    gap:12px;
+
+    margin-bottom:20px;
+}
+
+.summary p{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    padding:12px 0;
+
+    border-bottom:1px solid var(--border);
+}
+
+#generatedOutput{
+
+    margin-top:20px;
+
+    padding:16px;
+
+    max-height:320px;
+
+    overflow:auto;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    background:var(--surface-light);
+}
+
+.schema-preview-label{
+
+    display:block;
+
+    margin:20px 0 8px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    color:var(--primary);
+}
+
+.schema-preview{
+
+    width:100%;
+
+    min-height:260px;
+
+    padding:16px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    background:var(--surface-light);
+
+    color:var(--text);
+
+    font-family:Consolas, Monaco, monospace;
+
+    font-size:13px;
+
+    resize:vertical;
+}
+
+.checkbox-group input{
+
+    width:auto;
+}
+
+.wizard-buttons{
+
+    max-width:1250px;
+
+    margin:24px auto 0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.wizard-buttons button{
+
+    min-width:120px;
+}
+
+/* ========================================
+   Responsive
+======================================== */
+
+@media(max-width:1400px){
+
+    .form-grid{
+
+        grid-template-columns:
+            500px 500px;
+    }
+
+    .form-group input,
+    .form-group select{
+
+        width:500px;
+
+        max-width:500px;
+    }
+}
+
+@media(max-width:1200px){
+
+    .page-card{
+
+        max-width:100%;
+    }
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+        justify-content:start;
+    }
+
+    .form-group input,
+    .form-group select{
+
+        width:100%;
+
+        max-width:100%;
+    }
+
+    input[type="date"]{
+
+        width:100%;
+
+        max-width:100%;
+    }
+}
+
+@media(max-width:768px){
+
+    .wizard-steps{
+
+        gap:8px;
+    }
+
+    .wizard-step{
+
+        width:100%;
+
+        text-align:center;
+    }
+
+    .wizard-buttons{
+
+        flex-direction:column;
+
+        gap:12px;
+    }
+
+    .wizard-buttons button{
+
+        width:100%;
+    }
+}
+
+.level-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:20px;
+}
+
+.level-card{
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:24px;
+
+    cursor:pointer;
+
+    transition:all 0.2s ease;
+
+    background:var(--surface);
+}
+
+.level-card:hover{
+
+    transform:translateY(-2px);
+}
+
+.level-card.selected{
+
+    border:2px solid var(--secondary);
+
+    background:rgba(37,99,235,0.08);
+}
+
+.level-card h3{
+
+    margin-bottom:10px;
+}
+
+.level-card.selected{
+
+    border:2px solid var(--secondary);
+
+    background:
+    rgba(37,99,235,0.08);
+
+    position:relative;
+}
+
+.level-card.selected::after{
+
+    content:"✓";
+
+    position:absolute;
+
+    top:12px;
+
+    right:16px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:var(--secondary);
+}

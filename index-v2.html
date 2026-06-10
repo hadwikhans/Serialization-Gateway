@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Serialization Gateway</title>
+
+<link rel="stylesheet" href="CSS/app.css">
+<link rel="stylesheet" href="CSS/layout.css">
+<link rel="stylesheet" href="CSS/components.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <nav class="sidebar-nav">
+
+            <ul>
+
+                <li>
+                    <a href="index-v2.html" class="active">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="request-serials.html">
+                        <span class="material-symbols-outlined">barcode_scanner</span>
+                        <span>Request Serials</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="epcis-upload.html">
+                        <span class="material-symbols-outlined">upload_file</span>
+                        <span>EPCIS Upload</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="configuration.html">
+                        <span class="material-symbols-outlined">settings_applications</span>
+                        <span>Profiles</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="packaging-line-simulation.html">
+                        <span class="material-symbols-outlined">precision_manufacturing</span>
+                        <span>Line Simulation</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <a href="#">
+                <span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <div class="main-wrapper">
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <div class="header-title">
+                    Serialization Gateway
+                </div>
+
+            </div>
+
+            <div class="header-right">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search modules...">
+                </div>
+
+                <button
+                    class="btn btn-outline"
+                    id="themeToggle">
+
+                    🌙 Dark Mode
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- CONTENT -->
+
+        <main class="page-content">
+
+            <h1>Dashboard</h1>
+
+            <p
+                class="text-secondary"
+                style="margin-top:8px;margin-bottom:30px;">
+
+                Serialization Operations &
+                EPCIS Management Platform
+
+            </p>
+
+            <!-- STATS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <h4>Active Profiles</h4>
+                    <h2>12</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Serial Requests</h4>
+                    <h2>248</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>EPCIS Uploads</h4>
+                    <h2>182</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Generated Files</h4>
+                    <h2>96</h2>
+                </div>
+
+            </div>
+
+            <br><br>
+
+            <!-- MODULES -->
+
+            <div class="module-grid">
+
+                <div class="module-card">
+
+                    <div class="card-icon">
+
+                    <span
+                        class="material-symbols-outlined">
+
+                        barcode_scanner
+
+                    </span>
+
+                </div>
+
+                    <h3>Request Serials</h3>
+
+                    <p>
+                        Generate serial numbers from
+                        configured providers.
+                    </p>
+
+                    <a
+                        href="request-serials.html"
+                        class="btn btn-primary">
+
+                        Open Module
+
+                    </a>
+
+                </div>
+
+                <div class="module-card">
+
+                    <h3>EPCIS Upload</h3>
+
+                    <p>
+                        Upload EPCIS XML files using
+                        HTTPS or SFTP profiles.
+                    </p>
+
+                    <a
+                        href="epcis-upload.html"
+                        class="btn btn-primary">
+
+                        Open Module
+
+                    </a>
+
+                </div>
+
+                <div class="module-card">
+
+                    <h3>Configuration Profiles</h3>
+
+                    <p>
+                        Manage reusable connection
+                        profiles and environments.
+                    </p>
+
+                    <a
+                        href="configuration.html"
+                        class="btn btn-primary">
+
+                        Open Module
+
+                    </a>
+
+                </div>
+
+                <div class="module-card">
+
+                    <h3>Packaging Line Simulation</h3>
+
+                    <p>
+                        Simulate commissioning,
+                        aggregation and EPCIS generation.
+                    </p>
+
+                    <a
+                        href="packaging-line-simulation.html"
+                        class="btn btn-primary">
+
+                        Open Module
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script src="Js/theme.js"></script>
+
+</body>
+</html>

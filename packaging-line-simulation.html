@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+Packaging Line Simulation
+</title>
+
+<link rel="stylesheet" href="CSS/app.css">
+<link rel="stylesheet" href="CSS/layout.css">
+<link rel="stylesheet" href="CSS/components.css">
+<link rel="stylesheet" href="CSS/packaging-line-simulation.css">
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <nav class="sidebar-nav">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="request-serials.html">
+                        Request Serials
+                    </a>
+                </li>
+
+                <li>
+                    <a href="epcis-upload.html">
+                        EPCIS Upload
+                    </a>
+                </li>
+
+                <li>
+                    <a href="configuration.html">
+                        Profiles
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="packaging-line-simulation.html"
+                        class="active">
+
+                        Packaging Simulator
+
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <div class="main-wrapper">
+
+        <header class="top-header">
+
+            <div class="header-title">
+                Serialization Gateway
+            </div>
+
+            <div class="header-right">
+
+                <button
+                    id="themeToggle"
+                    class="btn btn-outline">
+
+                    🌙 Dark Mode
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <main class="page-content">
+
+            <div class="page-header">
+
+                <h1>
+                    Packaging Line Simulation
+                </h1>
+
+                <p class="text-secondary">
+
+                    Generate EPCIS commissioning
+                    and aggregation events.
+
+                </p>
+
+            </div>
+
+            <!-- STEP BAR -->
+
+            <div class="wizard-steps">
+
+                <div class="wizard-step active">
+                    1 Product
+                </div>
+
+                <div class="wizard-step">
+                    2 Levels
+                </div>
+
+                <div class="wizard-step">
+                    3 Hierarchy
+                </div>
+
+                <div class="wizard-step">
+                    4 Files
+                </div>
+
+                <div class="wizard-step">
+                    5 Events
+                </div>
+
+                <div class="wizard-step">
+                    6 Schema
+                </div>
+
+                <div class="wizard-step">
+                    7 Generate
+                </div>
+
+            </div>
+
+            <!-- STEP 1 -->
+
+            <div
+                id="step1"
+                class="page-card">
+
+                <h2>
+                    Product Information
+                </h2>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Batch / Lot Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lotNumber">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Material Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="materialNumber">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Each Quantity
+                        </label>
+
+                        <input
+                            type="number"
+                            id="eachQuantity"
+                            min="1"
+                            value="4">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            GCP
+                        </label>
+
+                        <input
+                            type="text"
+                            id="gcp"
+                            placeholder="8901234">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Extension Digit
+                        </label>
+
+                        <input
+                            type="number"
+                            id="extensionDigit"
+                            min="0"
+                            max="9"
+                            value="0">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Internal Material Code
+                        </label>
+
+                        <input
+                            type="text"
+                            id="internalMaterialCode"
+                            placeholder="INT0001">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Sender SGLN
+                        </label>
+
+                        <input
+                            type="text"
+                            id="senderSgln"
+                            placeholder="0614141.00002.1">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Receiver SGLN
+                        </label>
+
+                        <input
+                            type="text"
+                            id="receiverSgln"
+                            placeholder="0614141.00001.0">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Manufacturing Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="manufacturingDate">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Expiration Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="expirationDate">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- STEP 2 -->
+
+            <!-- STEP 2 -->
+
+<div id="step2"
+     class="page-card"
+     style="display:none;">
+
+    <h2>
+        Packaging Levels
+    </h2>
+
+    <div class="level-grid">
+
+        <div class="level-card selected"
+             data-level="EACH">
+
+            <h3>Eaches</h3>
+
+            <p>
+                Smallest saleable unit
+            </p>
+
+        </div>
+
+        <div class="level-card"
+             data-level="INNERPACK">
+
+            <h3>Inner Packs</h3>
+
+            <p>
+                Intermediate packaging
+            </p>
+
+        </div>
+
+        <div class="level-card"
+             data-level="CASE">
+
+            <h3>Cases</h3>
+
+            <p>
+                Shipper carton
+            </p>
+
+        </div>
+
+        <div class="level-card"
+             data-level="PALLET">
+
+            <h3>Pallets</h3>
+
+            <p>
+                Top logistics unit
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+            <!-- STEP 3 -->
+
+            <div
+                id="step3"
+                class="page-card"
+                style="display:none;">
+
+                <h2>
+                    Packaging Hierarchy
+                </h2>
+
+                <div id="hierarchyBuilder">
+
+                    <p>
+                        Select packaging levels and click Next.
+                    </p>
+                
+                </div>
+
+            </div>
+
+            <div
+                id="step4"
+                class="page-card"
+                style="display:none;">
+
+                <h2>
+                    Serial Number Files
+                </h2>
+
+                <p class="text-secondary">
+                    Upload serial number files for each selected packaging level.
+                    Files are parsed during generation.
+                </p>
+
+                <div id="serialFileInputsContainer" class="form-grid"></div>
+
+            </div>
+
+            <div
+                id="step5"
+                class="page-card"
+                style="display:none;">
+
+                <h2>
+                    Event Selection
+                </h2>
+
+                <div class="checkbox-group">
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="eventCommission"
+                            checked>
+                        Commission
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="eventAggregation"
+                            checked>
+                        Aggregation
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="eventDestroy">
+                        Destroy
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div
+                id="step6"
+                class="page-card"
+                style="display:none;">
+
+                <h2>
+                    Schema
+                </h2>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>EPCIS Version</label>
+
+                        <select id="epcisVersion">
+
+                            <option value="1.2">
+                                EPCIS 1.2
+                            </option>
+
+                            <option value="2.0">
+                                EPCIS 2.0
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Sample Schema Profile</label>
+
+                        <select id="schemaProfileSelect">
+
+                            <option value="">
+                                Select Profile
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Biz Location SGLN</label>
+
+                        <input
+                            id="bizLocation"
+                            placeholder="8909456.00002.0">
+
+                    </div>
+
+                </div>
+
+                <div class="button-group">
+
+                    <button
+                        id="loadSampleSchema"
+                        class="btn btn-outline">
+
+                        Load Sample Schema
+
+                    </button>
+
+                </div>
+
+                <label class="schema-preview-label">
+                    EPCIS Sample Schema
+                </label>
+
+                <textarea
+                    id="sampleSchema"
+                    class="schema-preview"
+                    spellcheck="false"></textarea>
+
+            </div>
+
+            <div
+                id="step7"
+                class="page-card"
+                style="display:none;">
+
+                <h2>
+                    Generate
+                </h2>
+
+                <div
+                    id="simulationSummary"
+                    class="summary">
+                </div>
+
+                <div class="button-group">
+
+                    <button
+                        id="generateSimulation"
+                        class="btn btn-primary">
+
+                        Generate File
+
+                    </button>
+
+                </div>
+
+                <pre id="generatedOutput"></pre>
+
+            </div>
+
+            <!-- NAVIGATION -->
+
+            <div class="wizard-buttons">
+
+                <button
+                    id="previousStep"
+                    class="btn btn-outline">
+
+                    Previous
+
+                </button>
+
+                <button
+                    id="nextStep"
+                    class="btn btn-primary">
+
+                    Next
+
+                </button>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script src="Js/theme.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.19.1/xlsx.full.min.js"></script>
+<script src="Js/packaging-line-simulation.js"></script>
+
+</body>
+
+</html>

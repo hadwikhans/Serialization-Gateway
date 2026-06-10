@@ -1,0 +1,237 @@
+/* ========================================
+   Main Layout
+======================================== */
+
+.app-layout{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ========================================
+   Sidebar
+======================================== */
+
+.sidebar{
+    width:240px;
+    background:var(--surface);
+    border-right:1px solid var(--border);
+    position:fixed;
+    left:0;
+    top:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    z-index:1000;
+}
+
+/* Navigation */
+
+.sidebar-nav{
+    flex:1;
+    padding:20px 10px;
+}
+
+.sidebar-nav ul{
+    list-style:none;
+}
+
+.sidebar-nav li{
+    margin-bottom:6px;
+}
+
+.sidebar-nav a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    text-decoration:none;
+    color:var(--text-secondary);
+    border-radius:8px;
+    transition:.2s;
+    font-size:14px;
+    font-weight:500;
+}
+
+.sidebar-nav a:hover{
+    background:var(--surface-light);
+    color:var(--primary);
+}
+
+.sidebar-nav a.active{
+    background:var(--surface-light);
+    color:var(--primary);
+    border-left:4px solid var(--secondary);
+    font-weight:600;
+}
+
+/* Sidebar Footer */
+
+.sidebar-footer{
+    padding:16px;
+    border-top:1px solid var(--border);
+}
+
+.sidebar-footer a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:var(--text-secondary);
+    font-size:14px;
+}
+
+.sidebar-footer a:hover{
+    color:var(--primary);
+}
+
+/* ========================================
+   Main Wrapper
+======================================== */
+
+.main-wrapper{
+    margin-left:240px;
+    width:calc(100% - 240px);
+    display:flex;
+    flex-direction:column;
+}
+
+/* ========================================
+   Top Header
+======================================== */
+
+.top-header{
+    height:70px;
+    background:var(--surface);
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 24px;
+
+    position:sticky;
+    top:0;
+
+    z-index:999;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.header-title{
+    font-size:28px;
+    font-weight:700;
+    color:var(--primary);
+}
+
+/* Header Right */
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+/* Search */
+
+.search-box input{
+    width:260px;
+    height:42px;
+    padding:0 14px;
+
+    border:1px solid var(--border);
+    border-radius:8px;
+
+    background:var(--surface);
+    color:var(--text);
+
+    outline:none;
+}
+
+.search-box input:focus{
+    border-color:var(--secondary);
+}
+
+/* User Avatar */
+
+.user-avatar{
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:var(--secondary);
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:700;
+}
+
+/* ========================================
+   Content
+======================================== */
+
+.page-content{
+    padding:24px;
+}
+
+/* ========================================
+   Cards
+======================================== */
+
+.page-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:24px;
+    box-shadow:var(--shadow-sm);
+}
+
+/* ========================================
+   Responsive
+======================================== */
+
+@media(max-width:1024px){
+
+    .sidebar{
+        width:80px;
+    }
+
+    .sidebar-nav span:last-child{
+        display:none;
+    }
+
+    .main-wrapper{
+        margin-left:80px;
+        width:calc(100% - 80px);
+    }
+
+    .search-box input{
+        width:180px;
+    }
+}
+
+@media(max-width:768px){
+
+    .top-header{
+        flex-direction:column;
+        height:auto;
+        gap:10px;
+        padding:15px;
+    }
+
+    .search-box input{
+        width:100%;
+    }
+
+    .page-content{
+        padding:16px;
+    }
+}
