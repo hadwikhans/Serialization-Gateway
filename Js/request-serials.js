@@ -1,4 +1,6 @@
 let serialNumbers = [];
+const API_BASE =
+'https://epcis-simulation-production.up.railway.app';
 
 const serializationType =
 document.getElementById("serializationType");
@@ -364,8 +366,7 @@ try{
     profile.httpsUrl;
 
     const response =
-        await fetch(
-            "/api/request-serials",
+        await fetch('https://epcis-simulation-production.up.railway.app/api/request-serials')
             {
                 method:"POST",
 
