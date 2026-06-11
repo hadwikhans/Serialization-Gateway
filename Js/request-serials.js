@@ -365,7 +365,7 @@ try{
 
     const response =
         await fetch(
-            'https://epcis-simulation-production-88c6.up.railway.app/api/request-serials',
+            'https://epcis-simulation-backend.onrender.com/api/request-serials',
             {
                 method: "POST",
 

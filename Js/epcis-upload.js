@@ -1,7 +1,6 @@
 let selectedFile = null;
 
-const API_BASE =
-'https://epcis-simulation-production.up.railway.app';
+const API_BASE = 'https://epcis-simulation-backend.onrender.com';
 
 function incrementDashboardStat(key){
 
@@ -321,7 +320,7 @@ async function uploadEPCIS(){
             );
 
             const response =
-            await fetch('https://epcis-simulation-production.up.railway.app/api/upload-epcis')
+            await fetch(`${API_BASE}/api/upload-epcis`,
                 {
                     method:"POST",
                     body:formData
@@ -460,7 +459,7 @@ async function uploadEPCIS(){
             );
 
             const sftpResponse =
-            await fetch('https://epcis-simulation-production.up.railway.app/api/upload-epcis-sftp')
+            await fetch(`${API_BASE}/api/upload-epcis-sftp`,
                 {
                     method: "POST",
                     body: sftpFormData
