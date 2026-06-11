@@ -365,7 +365,7 @@ try{
 
     const response =
         await fetch(
-            'https://epcis-simulation-backend.onrender.com/api/request-serials',
+            'https://epcis-simulation-production-88c6.up.railway.app/api/request-serials',
             {
                 method: "POST",
 
@@ -708,7 +708,7 @@ if(serialNumbers.length === 0)
 const rows =
     serialNumbers.map(
         serial => ({
-            "Serial Number":
+            "Serial Numbers":
             serial
         })
     );
